@@ -10,6 +10,7 @@ $resultado = $conexion->query($sql);
 <html lang="en">
 
 <head>
+    <?php require_once '../Includes/Header.php' ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Productos</title>
@@ -45,5 +46,6 @@ $resultado = $conexion->query($sql);
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
+<?php require_once '../Includes/Footer.php' ?>
 
 </html>
