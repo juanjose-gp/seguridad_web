@@ -15,13 +15,13 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav gap-5">
           <li class="nav-item ms-4">
-            <a class="nav-link" href="#">Productos</a>
+            <a class="nav-link" href="../Inicio/Inicio.php">Productos</a>
           </li>
           <li class="nav-item">
             <a
               class="nav-link active fw-semibold"
               aria-current="page"
-              href="#">Compra</a>
+              href="../Compra/F_compra.php">Compra</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Registro</a>

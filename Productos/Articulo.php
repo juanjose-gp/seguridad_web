@@ -34,7 +34,9 @@
                     <div class="col-md-6">
                         <p><?= $producto['descripcion'] ?></p>
                         <p><strong>Precio:</strong> $<?= number_format($producto['precio'], 0, ',', '.') ?></p>
-                        <a href="../Inicio/Inicio.php" class="btn btn-outline-primary">Añadir al carrito</a>
+                        <div class="d-flex justify-content-center">
+                            <a href="../Compra/F_compra.php" class="btn btn-outline-primary">Comprar</a>
+                        </div>
                     </div>
                 </div>
             </div>

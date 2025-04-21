@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <?php require_once '../Includes/Header.php' ?>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Formulario de Compra</title>
@@ -13,8 +14,6 @@
 </head>
 
 <body>
-  <?php require_once 'Includes/Header.php' ?>
-
   <div class="container mt-5 mb-5">
     <form>
       <div class="row justify-content-center">
@@ -74,6 +73,6 @@
     integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
     crossorigin="anonymous"></script>
 </body>
-<?php require_once 'Includes/Footer.php' ?>
+<?php require_once '../Includes/Footer.php' ?>
 
 </html>
