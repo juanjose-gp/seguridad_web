@@ -34,9 +34,28 @@
                     <div class="col-md-6">
                         <p><?= $producto['descripcion'] ?></p>
                         <p><strong>Precio:</strong> $<?= number_format($producto['precio'], 0, ',', '.') ?></p>
-                        <div class="d-flex justify-content-center">
-                            <a href="../Compra/F_compra.php" class="btn btn-outline-primary">Comprar</a>
+                        <div class="d-flex align-items-center gap-2">
+                            <div>
+                                <label for="cantidad" class="form-label"><strong>Cantidad:</strong></label>
+                                <div class="d-flex align-items-center gap-5" style="margin-left: 200px; margin-top: 30px;">
+                                    <select id="cantidad" name="cantidad" class="form-select form-select-sm" style="width: 100px;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <a href="../Compra/F_compra.php" class="btn btn-outline-primary btn-sm ">Comprar</a>
+                                </div>
+
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
