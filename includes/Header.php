@@ -24,7 +24,7 @@
               href="../Compra/F_compra.php">Compra</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Registro</a>
+            <a class="nav-link" href="../Registro/F_Registro.html">Registro</a>
           </li>
           <li class="ms-5 me-5">
             <input
