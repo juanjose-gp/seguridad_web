@@ -72,7 +72,7 @@ $(document).ready(function () {
       },
       repetir_contrasena: {
         required: "Ingresa otra vez tu contraseña",
-        minlength: "Tu contraseña debe ser de no menos de 5 caracteres de longitud",
+        minlength: "Tu contraseña debe ser de no menos de 8 caracteres de longitud",
         equalTo: "Por favor ingresa la misma contraseña de arriba",
       },
       correo: "Por favor ingresa un correo válido",

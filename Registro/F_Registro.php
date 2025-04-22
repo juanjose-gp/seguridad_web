@@ -32,6 +32,8 @@ if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
     exit();
 }
 
+// Validar que la contraseña sea igual a repetir contraseña
+//
 if ($contrasena !== $repetir_contrasena) {
     $_SESSION['error'] = "Las contraseñas no coinciden";
     header("Location: F_Registro.html");
