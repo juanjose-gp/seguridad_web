@@ -6,7 +6,7 @@ if ($conexion->connect_error) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header("Location: F_Registro.html");
+    header("Location: Registro.php");
     echo "Post";
     exit();
 }
@@ -22,19 +22,19 @@ $repetir_contrasena = cleanInput($_POST['repetir_contrasena']);
 
 // Validar que los datos no estén vacíos
 if (empty($nombre_completo) || empty($correo) || empty($contrasena) || empty($edad) || empty($telefono) || empty($fecha_nacimiento)) {
-    header("Location: F_Registro.html");
+    header("Location: Registro.php");
     echo "llegaron";
     exit();
 }
 // Validar que el correo electrónico tenga un formato válido
 if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-    header("Location: F_Registro.html");
+    header("Location: Registro.php");
     exit();
 }
 
 if ($contrasena !== $repetir_contrasena) {
     $_SESSION['error'] = "Las contraseñas no coinciden";
-    header("Location: F_Registro.html");
+    header("Location: Registro.php");
     exit();
 }
 try {
@@ -104,7 +104,7 @@ function redirectToWelcomePage()
  */
 function redirectToRegister()
 {
-    header("Location: registro.html");
+    header("Location: Registro.php");
     exit();
 }
 
@@ -129,8 +129,8 @@ function CreateConnection()
     try {
         // Datos de conexión a la base de datos
         $host = "localhost";
-        $usuario_db = "security";
-        $contrasena_db = "security";
+        $usuario_db = "seguridad";
+        $contrasena_db = "jujo0218";
         $nombre_db = "seguridad";
 
         // Conexión a la base de datos

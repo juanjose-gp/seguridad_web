@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <header>
   <nav class="navbar navbar-expand-sm" style="background-color: #eeeae2">
     <div class="container-fluid">
@@ -14,18 +16,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav gap-5">
-
           <li class="nav-item ms-4">
             <a class="nav-link" href="../Inicio/Inicio.php">Productos</a>
           </li>
           <li class="nav-item">
-            <a
-              class="nav-link "
-              aria-current="page"
-              href="../Compra/F_compra.php">Compra</a>
+            <a class="nav-link" href="../Compra/F_compra.php">Compra</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../Registro/F_Registro.html">Registro</a>
+            <a class="nav-link" href="../Registro/Registro.php">Registro</a>
           </li>
           <li class="ms-5 me-5">
             <input
@@ -36,11 +34,24 @@
               aria-label="Search" />
           </li>
           <li class="nav-item ms-5">
-            <a class="nav-link" href="#">Contacto</a>
+            <a class="nav-link" href="../Ini_sesion/logout.php">Cerrar sesión</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Quienes Somos </a>
-          </li>
+
+
+          <?php if (isset($_SESSION['cliente'])): ?>
+            <!-- Si el usuario está logueado, muestra su nombre y opción de cerrar sesión -->
+            <li class="nav-item">
+              <a class="nav-link"><?php echo $_SESSION['cliente']; ?></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../Ini_sesion/logout.php">Cerrar sesión</a>
+            </li>
+          <?php else: ?>
+            <!-- Si no está logueado, muestra el enlace de iniciar sesión -->
+            <li class="nav-item">
+              <a class="nav-link" href="../Ini_sesion/entrar.php">Iniciar sesión</a>
+            </li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>
