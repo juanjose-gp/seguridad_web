@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <?php require_once '../Includes/Header.php' ?>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario de Registro</title>
+  <!-- Agregar los enlaces a los estilos de Bootstrap -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+  <div class="container mt-5 mb-5">
+    <form id="signupForm" action="F_Registro.php" method="post">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title text-center">Registro de Usuario</h4>
+            </div>
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="nombre_completo" class="form-label">Nombre Completo</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre_completo"
+                  name="nombre_completo"
+                  placeholder="Ingrese su nombre completo"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label for="edad" class="form-label">Edad</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="edad"
+                  name="edad"
+                  placeholder="Ingrese su edad"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Telefono</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="telefono"
+                  name="telefono"
+                  placeholder="Ingrese su numero de telefono"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label for="dateofbirthday" class="form-label">Fecha de nacimiento</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fecha_nacimiento"
+                  name="fecha_nacimiento"
+                  placeholder="Ingrese su fecha de nacimiento"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="correo"
+                  name="correo"
+                  placeholder="ingrese su correo electronico"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label for="contrasena" class="form-label">Contraseña</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="contrasena"
+                  name="contrasena"
+                  placeholder="Ingrese su contraseña"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label for="repetir_contrasena" class="form-label">Repetir Contraseña</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="repetir_contrasena"
+                  name="repetir_contrasena"
+                  placeholder="Repita su contrasena"
+                  required />
+              </div>
+              <div class="d-flex justify-content-center">
+                <button type="submit " class="btn btn-outline-primary">
+                  Registrarse
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Bootstrap (opcional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- SweetAlert2 (opcional) -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- jQuery Validation Plugin  -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+  <!-- Tu archivo de validaciones -->
+  <script src="ValidacionesR.js"></script>
+</body>
+<?php require_once '../Includes/Footer.php' ?>
+
+</html>
