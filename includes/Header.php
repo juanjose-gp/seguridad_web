@@ -1,4 +1,12 @@
-<?php session_start(); ?>
+<?php
+
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
+
 
 <header>
   <nav class="navbar navbar-expand-sm" style="background-color: #eeeae2">
