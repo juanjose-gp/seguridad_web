@@ -43,9 +43,7 @@
             <li class="nav-item">
               <a class="nav-link"><?php echo $_SESSION['cliente']; ?></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../Ini_sesion/logout.php">Cerrar sesión</a>
-            </li>
+
           <?php else: ?>
             <!-- Si no está logueado, muestra el enlace de iniciar sesión -->
             <li class="nav-item">

@@ -23,7 +23,7 @@
             </div>
             <div class="d-flex justify-content-center">
               <div class="d-flex justify-content-center">
-                <a href="../Ini_sesion/Login.html" class="btn btn-outline-primary">Iniciar Sesion</a>
+                <a href="../Ini_sesion/Login.php" method="POST" class="btn btn-outline-primary">Iniciar Sesion</a>
               </div>
             </div>
           </div>
