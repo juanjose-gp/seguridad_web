@@ -31,6 +31,7 @@
               style="width: 400px"
               type="search"
               placeholder="Buscar"
+              name="Busqueda"
               aria-label="Search" />
           </li>
           <li class="nav-item ms-5">
