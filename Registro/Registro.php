@@ -120,6 +120,6 @@
   <!-- Tu archivo de validaciones -->
   <script src="ValidacionesR.js"></script>
 </body>
-<?php require_once '../Includes/Footer.php' ?>
+<?php require_once '../Includes/Footer.html' ?>
 
 </html>

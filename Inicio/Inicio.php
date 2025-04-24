@@ -1,6 +1,6 @@
 <?php
-require "Conexion.php";
-$conexion = ConexionOK();
+require_once __DIR__ . '/../Includes/ConexionBD.php';
+$conexion = CreateConnection ();
 $sql = "SELECT * FROM productos";
 $resultado = $conexion->query($sql);
 
@@ -21,6 +21,8 @@ $resultado = $conexion->query($sql);
 
     <div class="container mt-4">
         <div class="row ">
+            <!--Recorre(itera) el resultado de la consulta y devuelve cada fila como un array asociativo
+            clave => valor en php se usa => paradefinir que es asociativo. -->
             <?php while ($fila = $resultado->fetch_assoc()): ?>
                 <div class="col-md-4 mb-4 ">
                     <div class="card shadow-sm h-100 ">
@@ -30,6 +32,8 @@ $resultado = $conexion->query($sql);
                         <div class="card-body">
                             <h5 class="card-title"><?= $fila['nombre'] ?></h5>
                             <p class="card-text"><?= $fila['descripcion'] ?></p>
+                        <!--number_format hace que me cambie el formato del precio que tengo en la BD 
+                        de INT(2399990) pasa a (2.399.990)-->
                             <p class="card-text"><strong>$<?= number_format($fila['precio'], 0, ',', '.') ?></strong></p>
                             <div class="d-flex justify-content-center">
                                 <a href="../Productos/Articulo.php?id_producto=<?= $fila['id_producto'] ?>" class="btn btn-outline-primary">Ver más</a>
@@ -46,6 +50,6 @@ $resultado = $conexion->query($sql);
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
-<?php require_once '../Includes/Footer.php' ?>
+<?php require_once '../Includes/Footer.html' ?>
 
 </html>

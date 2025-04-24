@@ -17,3 +17,4 @@ function CreateConnection()
 
 // Asegúrate de llamar esta función en cada archivo donde se necesita la conexión.
 $conn = CreateConnection();
+?>

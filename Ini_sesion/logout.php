@@ -1,5 +1,14 @@
 <?php
+// Inicia o reanuda la sesión actual.
+// Es necesario para poder destruirla correctamente.
 session_start();
-session_destroy(); // Destruir la sesión
-header("Location: ../Inicio/Inicio.php"); // Redirigir al formulario de inicio de sesión
+
+// Destruye todos los datos asociados a la sesión actual en el servidor.
+// Esto cierra efectivamente la sesión del usuario.
+session_destroy();
+
+// Se redirecciona al usuario a la página de inicio con la sesion ya cerrada.
+header("Location: ../Inicio/Inicio.php");
+
 exit;
+?>

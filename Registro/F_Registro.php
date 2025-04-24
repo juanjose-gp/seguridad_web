@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../Includes/ConexionBD.php';
 $conexion = CreateConnection();
 if ($conexion->connect_error) {
     echo "Error en la conexión a la base de datos";
@@ -124,22 +125,3 @@ function cleanInput($input)
 }
 
 
-
-// Crear conexión a la base de datos
-function CreateConnection()
-{
-    try {
-        // Datos de conexión a la base de datos
-        $host = "localhost";
-        $usuario_db = "seguridad";
-        $contrasena_db = "jujo0218";
-        $nombre_db = "seguridad";
-
-        // Conexión a la base de datos
-        $conexion = new mysqli($host, $usuario_db, $contrasena_db, $nombre_db);
-        return $conexion;
-    } catch (Exception $ex) {
-        echo "Error en la conexión a la base de datos" . $ex->getMessage();
-        exit();
-    }
-}
