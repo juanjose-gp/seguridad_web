@@ -131,8 +131,8 @@ function CreateConnection()
     try {
         // Datos de conexión a la base de datos
         $host = "localhost";
-        $usuario_db = "seguridad";
-        $contrasena_db = "jujo0218";
+        $usuario_db = "security";
+        $contrasena_db = "security";
         $nombre_db = "seguridad";
 
         // Conexión a la base de datos

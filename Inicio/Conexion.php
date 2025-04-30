@@ -9,8 +9,8 @@ function ConexionOk()
 {
     try {
         $host = "localhost";
-        $usuario_db = "seguridad";
-        $contrasena_db = "jujo0218";
+        $usuario_db = "security";
+        $contrasena_db = "security";
         $nombre_db = "seguridad";
 
         return new mysqli($host, $usuario_db, $contrasena_db, $nombre_db);
