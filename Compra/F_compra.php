@@ -55,6 +55,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="ValidacionesC.js"></script>
 </body>
-<?php require_once '../Includes/Footer.php' ?>
+<?php require_once '../Includes/Footer.html' ?>
 
 </html>

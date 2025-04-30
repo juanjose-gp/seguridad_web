@@ -5,15 +5,16 @@
     <?php require_once '../Includes/Header.php' ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Articulo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 
     <?php
+    //envia el id del producto
     if (isset($_GET['id_producto'])) {
         $id = $_GET['id_producto'];
 
-        require '../Inicio/Conexion.php';
-        $conexion = ConexionOK();
+        require_once __DIR__ . '/../Includes/ConexionBD.php';
+        $conexion = CreateConnection ();
 
         $query = "SELECT * FROM productos WHERE id_producto = $id";
         $resultado = $conexion->query($query);
@@ -26,7 +27,6 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h1><?= $producto['nombre'] ?></h1>
-                        <!-- Imagen del producto -->
                         <div class="text-center">
                             <img src="../<?= $producto['imagen_url'] ?>" class="rounded " alt="<?= $producto['nombre'] ?>" width="400">
                         </div>
@@ -70,7 +70,6 @@
     }
     ?>
 </head>
-<?php require_once '../Includes/Footer.php' ?>
+<?php require_once '../Includes/Footer.html' ?>
 </body>
-
 </html>

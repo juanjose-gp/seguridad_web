@@ -1,6 +1,7 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+require_once __DIR__ . '/../Includes/ConexionBD.php';
 
 $conexion = CreateConnection();
 if ($conexion->connect_error) {
@@ -63,11 +64,4 @@ function cleanInput($input) {
     return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
 }
 
-function CreateConnection() {
-    $host = "localhost";
-    $usuario_db = "root";
-    $contrasena_db = "";
-    $nombre_db = "bambueno";
-    return new mysqli($host, $usuario_db, $contrasena_db, $nombre_db);
-}
 ?>

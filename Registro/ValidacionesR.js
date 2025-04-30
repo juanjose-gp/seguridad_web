@@ -81,7 +81,7 @@ $(document).ready(function () {
       repetir_contrasena: {
         required: "Ingresa otra vez tu contraseña",
         minlength: "Tu contraseña debe ser de no menos de 8 caracteres de longitud",
-        passwordStrength: "La contraseña debe contener al menos una letra, un número y un carácter especial.",
+        passwordStrength: "La contraseña debe contener al menos una letra, un número y un carácter especial..",
         equalTo: "Por favor ingresa la misma contraseña de arriba",
       },
       correo: "Por favor ingresa un correo válido",

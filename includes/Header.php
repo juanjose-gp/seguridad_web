@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php
+// Inicia la sesión solo si aún no ha sido iniciada.
+// Esto evita errores si session_start() ya fue llamado en otra parte del proyecto.
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 
 <header>
   <nav class="navbar navbar-expand-sm" style="background-color: #eeeae2">
@@ -38,17 +45,13 @@
             <a class="nav-link" href="../Ini_sesion/logout.php">Cerrar sesión</a>
           </li>
 
-
+          <!--si el usuario inicio sesion se muesta su nombre-->
           <?php if (isset($_SESSION['cliente'])): ?>
-            <!-- Si el usuario está logueado, muestra su nombre y opción de cerrar sesión -->
             <li class="nav-item">
               <a class="nav-link"><?php echo $_SESSION['cliente']; ?></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../Ini_sesion/logout.php">Cerrar sesión</a>
-            </li>
+            <!--pero si no ha iniciado sesion se muestra la aopcion de inisio de sesion -->
           <?php else: ?>
-            <!-- Si no está logueado, muestra el enlace de iniciar sesión -->
             <li class="nav-item">
               <a class="nav-link" href="../Ini_sesion/entrar.php">Iniciar sesión</a>
             </li>
