@@ -1,9 +1,9 @@
 <?php
 function CreateConnection()
 {
-    $host = "localhost";
+    $host = "dockerDb";
     $usuario_db = "security";
-    $contrasena_db = "security";
+    $contrasena_db = "123456";
     $nombre_db = "seguridad";
 
     $conn = new mysqli($host, $usuario_db, $contrasena_db, $nombre_db);

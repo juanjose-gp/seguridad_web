@@ -1,8 +1,11 @@
+<?php
+require_once '../Includes/Header.php';
+$redirect = isset($_GET['redirect']) ? $_GET['redirect'] : '';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <?php require_once '../Includes/Header.php' ?>
   <meta charset="UTF-8">
   <title>Iniciar Sesión</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,7 +14,7 @@
 <body class="bg-light">
   <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
-      <div class="col-md-4">
+    <div class="col-md-4">
         <div class="card p-4 shadow">
           <h4 class="text-center mb-4">Iniciar Sesión</h4>
             <!-- Esta condicion me esta verificando los datos del formulario, si se cumple
@@ -36,6 +39,9 @@
               <label for="contrasena" class="form-label">Contraseña</label>
               <input type="password" class="form-control" id="contrasena" name="contrasena" required>
             </div>
+            <?php if ($redirect !== ''): ?>
+              <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($redirect); ?>">
+            <?php endif; ?>
             <button type="submit" class="btn btn-primary w-100 mb-2" >Entrar</button>
             <h6 class="text-center">¿No tienes una cuenta?<br> <a  href="../Registro/Registro.php">Registrate.</a></h6>
           </form>

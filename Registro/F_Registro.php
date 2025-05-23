@@ -20,6 +20,7 @@ $nombre_completo = cleanInput($_POST['nombre_completo']);
 $edad = cleanInput($_POST['edad']);
 $telefono = cleanInput($_POST['telefono']);
 $fecha_nacimiento = cleanInput($_POST['fecha_nacimiento']);
+$id_rol = cleanInput($_POST['id_rol']);
 $correo = cleanInput($_POST['correo']);
 $contrasena = cleanInput($_POST['contrasena']);
 $repetir_contrasena = cleanInput($_POST['repetir_contrasena']);
@@ -27,7 +28,7 @@ $repetir_contrasena = cleanInput($_POST['repetir_contrasena']);
 // Validar que los datos no estén vacíos
 if (
     empty($nombre_completo) || empty($correo) || empty($contrasena) ||
-    empty($edad) || empty($telefono) || empty($fecha_nacimiento)
+    empty($edad) || empty($telefono) || empty($fecha_nacimiento) || empty($id_rol)
 ) {
     header(GeneralConfig::registerPageUrl_registro->value);
     exit();
@@ -55,8 +56,8 @@ try {
     $hashed_password = hash(GeneralConfig::encryptAlgorith->value, $password_with_salt);
 
     // Consulta SQL con parámetros preparados (previene inyección SQL)
-    $sql = "INSERT INTO clientes (nombre_completo, correo, edad, fecha_cumpleanos, contrasena, telefono, salt) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO clientes (nombre_completo, correo, edad, fecha_cumpleanos, rol, contrasena, telefono, salt) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conexion->prepare($sql);
 
@@ -66,11 +67,12 @@ try {
     }
 
     $stmt->bind_param(
-        "ssissss",
+        "ssisssss",
         $nombre_completo,
         $correo,
         $edad,
         $fecha_nacimiento,
+        $id_rol,
         $hashed_password,
         $telefono,
         $salt_hex

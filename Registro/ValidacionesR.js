@@ -38,6 +38,9 @@ $(document).ready(function () {
         maxDateToday: true, // <-- Solo true aquí
         //=> 12 años
       },
+      id_rol: {
+        required: true,
+      },
       contrasena: {
         required: true,
         minlength: 8,
@@ -85,6 +88,7 @@ $(document).ready(function () {
         equalTo: "Por favor ingresa la misma contraseña de arriba",
       },
       correo: "Por favor ingresa un correo válido",
+      id_rol: "Por favor seleccione un rol",
     },
 
     errorElement: "em",

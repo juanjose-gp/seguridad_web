@@ -1,7 +1,8 @@
 <?php
+session_start();
 // Inicia o reanuda la sesión actual.
 // Es necesario para poder destruirla correctamente.
-session_start();
+
 
 // Destruye todos los datos asociados a la sesión actual en el servidor.
 // Esto cierra efectivamente la sesión del usuario.

@@ -1,8 +1,8 @@
+<?php require_once '../Includes/Header.php' ?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <?php require_once '../Includes/Header.php' ?>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Formulario de Registro</title>
@@ -63,6 +63,16 @@
                   placeholder="Ingrese su fecha de nacimiento"
                   required />
               </div>
+              <div class="mb-3">
+            <div class="form-floating mb-4">
+              <select class="form-select" id="id_rol" name="id_rol" required>
+                <option value=""disabled selected>Elige un rol</option>
+                <option value="usu">Usuario</option>
+                <option value="admin">Administrador</option>
+                <option value="emple">Empleado</option>
+              </select>
+              <label for="id_producto">rol</label>
+            </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Correo Electrónico</label>
                 <input

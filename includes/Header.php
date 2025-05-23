@@ -1,10 +1,16 @@
 <?php
-// Inicia la sesión solo si aún no ha sido iniciada.
-// Esto evita errores si session_start() ya fue llamado en otra parte del proyecto.
+if (headers_sent($file, $line)) {
+    echo "Los encabezados ya fueron enviados en $file en la línea $line";
+    exit;
+} 
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+// Inicia la sesión solo si aún no ha sido iniciada.
+// Esto evita errores si session_start() ya fue llamado en otra parte del proyecto.
+
+
 ?>
 
 <header>
@@ -32,10 +38,13 @@ if (session_status() === PHP_SESSION_NONE) {
           <li class="nav-item">
             <a class="nav-link" href="../Registro/Registro.php">Registro</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pr_token/admin.php">admin</a>
+          </li>
           <li class="ms-5 me-5">
             <input
               class="form-control rounded-pill"
-              style="width: 400px"
+              style="width: 200px"
               type="search"
               placeholder="Buscar"
               name="Busqueda"

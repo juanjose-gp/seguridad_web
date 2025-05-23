@@ -1,4 +1,5 @@
 <?php
+require_once '../Includes/Header.php';
 require_once __DIR__ . '/../Includes/ConexionBD.php';
 $conexion = CreateConnection ();
 $sql = "SELECT * FROM productos";
@@ -10,7 +11,6 @@ $resultado = $conexion->query($sql);
 <html lang="en">
 
 <head>
-    <?php require_once '../Includes/Header.php' ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Productos</title>
