@@ -7,6 +7,7 @@ session_start();
     *funciona siempre, no importa desde dónde se ejecute el script, porque parte del lugar real donde está el archivo
  */
 require_once __DIR__ . '/../Includes/ConexionBD.php';
+require_once __DIR__ . '/../enums/general_config.php';
 
 // nos guarda el mensaje de error si lo hay para despues deflejaro 
 $error = '';
@@ -36,12 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $stmt->fetch();//traemos los datos
 
                 // se calcula el hash de la contraseña ingresada concatenado con el 'salt' de la base de datos
-                $input_hash = hash('sha256', $contrasena . $salt);
+                $input_hash = hash(GeneralConfig::encryptAlgorith->value, $contrasena . $salt);
 
                 // Comparamos el hash generado con la contraseña almacenada en la base de datos
                 if ($input_hash === $hashed_password) {
                     $_SESSION['cliente'] = $nombre_completo;
-                    header("Location: ../Inicio/Inicio.php");
+                    header(GeneralConfig::loginPageUrlInicio->value); // Redirigir a la página de bienvenida
                     exit;
                 } else {
                     $error = "Contraseña incorrecta.";
@@ -59,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $_SESSION['error'] = $error;
     
     // Redirigir de nuevo al formulario
-    header("Location: entrar.php");
+    header(GeneralConfig::loginPageUrl_error->value); // Redirigir a la página de inicio de sesión
     exit;
 }
 ?>

@@ -1,14 +1,17 @@
 <?php
+session_start(); // Asegúrate de iniciar la sesión si usarás mensajes
+
 require_once __DIR__ . '/../Includes/ConexionBD.php';
+require_once __DIR__ . '/../enums/general_config.php';
+
 $conexion = CreateConnection();
+
 if ($conexion->connect_error) {
-    echo "Error en la conexión a la base de datos";
     die("Error en la conexión a la base de datos: " . $conexion->connect_error);
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header("Location: Registro.php");
-    echo "Post";
+    header(GeneralConfig::registerPageUrl_registro->value); // Redirección si no es POST
     exit();
 }
 
@@ -22,37 +25,39 @@ $contrasena = cleanInput($_POST['contrasena']);
 $repetir_contrasena = cleanInput($_POST['repetir_contrasena']);
 
 // Validar que los datos no estén vacíos
-if (empty($nombre_completo) || empty($correo) || empty($contrasena) || empty($edad) || empty($telefono) || empty($fecha_nacimiento)) {
-    header("Location: Registro.php");
-    echo "llegaron";
-    exit();
-}
-// Validar que el correo electrónico tenga un formato válido
-if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-    header("Location: Registro.php");
+if (
+    empty($nombre_completo) || empty($correo) || empty($contrasena) ||
+    empty($edad) || empty($telefono) || empty($fecha_nacimiento)
+) {
+    header(GeneralConfig::registerPageUrl_registro->value);
     exit();
 }
 
-// Validar que la contraseña sea igual a repetir contraseña
-//
+// Validar formato de correo electrónico
+if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+    header(GeneralConfig::registerPageUrl_registro->value);
+    exit();
+}
+
+// Validar que las contraseñas coincidan
 if ($contrasena !== $repetir_contrasena) {
     $_SESSION['error'] = "Las contraseñas no coinciden";
-    header("Location: Registro.php");
+    header(GeneralConfig::registerPageUrl_registro->value);
     exit();
 }
+
 try {
-    //Generar sal para agregar el factor de pseudoaleatoriedad
-    $salt = random_bytes(16); // Genera un salt aleatorio de 32 caracteres hexadecimales
-    $salt_hex = bin2hex($salt); // Convierte el salt a hexadecimal
+    // Generar salt aleatorio
+    $salt = random_bytes(16);
+    $salt_hex = bin2hex($salt);
 
-    $password_with_salt = $contrasena . $salt_hex; // Combina la contraseña con el salt
+    $password_with_salt = $contrasena . $salt_hex;
+    $hashed_password = hash(GeneralConfig::encryptAlgorith->value, $password_with_salt);
 
-    $hashed_password = hash('sha256', $password_with_salt); // Hashea la contraseña con el salt
+    // Consulta SQL con parámetros preparados (previene inyección SQL)
+    $sql = "INSERT INTO clientes (nombre_completo, correo, edad, fecha_cumpleanos, contrasena, telefono, salt) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-    // Código vulnerable a inyección SQL
-    $sql = "INSERT INTO clientes (nombre_completo, correo, edad, fecha_cumpleanos, contrasena, telefono, salt) VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-    // Preparar la consulta
     $stmt = $conexion->prepare($sql);
 
     if (!$stmt) {
@@ -60,11 +65,8 @@ try {
         exit();
     }
 
-    // Ejecutar la consulta directamente sin preparar ni sanitizar
-
-
     $stmt->bind_param(
-        "ssissss", // s: string, i: int
+        "ssissss",
         $nombre_completo,
         $correo,
         $edad,
@@ -74,22 +76,15 @@ try {
         $salt_hex
     );
 
-    // Ejecutar la consulta
-    // Aquí se ejecuta la consulta SQL, lo que puede ser vulnerable a inyección SQL
-
     if ($stmt->execute()) {
         redirectToWelcomePage();
     } else {
         redirectToRegister();
     }
+
 } catch (Exception $e) {
     echo "Error: " . $e->getMessage();
 }
-
-
-
-// Verificar si se registró el usuario
-
 
 $conexion->close();
 
@@ -98,30 +93,27 @@ $conexion->close();
  */
 function redirectToWelcomePage()
 {
-    header("Location: bienvenido.php");
+    header(GeneralConfig::welcomePageUrl_registro->value);
     exit();
 }
 
 /**
- * Redirige al usuario a la página de login.
+ * Redirige al usuario a la página de registro.
  */
 function redirectToRegister()
 {
-    header("Location: Registro.php");
+    header(GeneralConfig::registerPageUrl_registro->value);
     exit();
 }
 
-// Función para limpiar la entrada del usuario
-// Esta función es vulnerable a inyección SQL y no debería usarse en producción
+/**
+ * Limpia la entrada del usuario.
+ */
 function cleanInput($input)
 {
-    // Eliminar espacios en blanco al inicio y al final
     $input = trim($input);
-    // Eliminar barras invertidas
     $input = stripslashes($input);
-    // Convertir caracteres especiales a entidades HTML
-    $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
+    $input = htmlspecialchars($input, ENT_QUOTES, GeneralConfig::characterGame->value);
     return $input;
 }
-
-
+?>

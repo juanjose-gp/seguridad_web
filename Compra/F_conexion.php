@@ -2,6 +2,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 require_once __DIR__ . '/../Includes/ConexionBD.php';
+require_once __DIR__ . '/../enums/general_config.php';
 
 $conexion = CreateConnection();
 if ($conexion->connect_error) {
@@ -9,7 +10,7 @@ if ($conexion->connect_error) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header("Location: F_compra.php");
+    header(GeneralConfig::compraPageUrl->value);
     exit();
 }
 
@@ -48,20 +49,20 @@ $conexion->close();
  * Redirige al usuario a la página de productos
  */
 function redirectToProductPage() {
-    header("Location: ../Inicio/Inicio.php");
+    header(GeneralConfig::loginPageUrlInicio->value);
     exit();
 }
 
 /**
- * Redirige al usuario a la página de compra
+ * Redirige al usuario a la página de compra si tiene error
  */
 function redirectToCompra() {
-    header("Location: F_compra.php");
+    header(GeneralConfig::compraPageUrl->value);
     exit();
 }
 
 function cleanInput($input) {
-    return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+    return htmlspecialchars(trim($input), ENT_QUOTES, GeneralConfig::characterGame->value);
 }
 
 ?>
