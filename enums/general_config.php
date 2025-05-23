@@ -14,8 +14,8 @@ enum GeneralConfig: string {
     //registro
     case welcomePageUrl_registro = 'Location: bienvenido.php';
     case registerPageUrl_registro = 'Location: Registro.php';
-    //login
-    case loginPageUrlInicio = 'Location: ../Inicio/Inicio.php';
+   
+    case Inicio = 'Location: ../Inicio/Inicio.php';
     case loginPageUrl_error = 'Location: entrar.php';
     //compra
     case compraPageUrl = 'Location: F_compra.php';
@@ -26,5 +26,8 @@ enum GeneralConfig: string {
     case logFile = 'error.log';
     case logFileWarnings = 'warnings.log';
     case credentialFile = 'database.json';
+
+    case accesoDenegado = 'Location: ../pr_token/accesodenegado.php';
+    case accesoNoAutorizado = 'Location: ../pr_token/acceso_no_autorizado.php';
 
 }
