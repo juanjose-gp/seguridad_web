@@ -49,7 +49,7 @@ $conexion->close();
  * Redirige al usuario a la página de productos
  */
 function redirectToProductPage() {
-    header(GeneralConfig::Inicio->value);
+    header(GeneralConfig::loginPageUrlInicio->value);
     exit();
 }
 
