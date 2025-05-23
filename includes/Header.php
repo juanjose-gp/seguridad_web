@@ -39,7 +39,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <a class="nav-link" href="../Registro/Registro.php">Registro</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pr_token/admin.php">admin</a>
+            <a class="nav-link" href="../pr_token/admin.php">Admin</a>
           </li>
           <li class="ms-5 me-5">
             <input

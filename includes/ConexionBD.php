@@ -2,7 +2,7 @@
     // Manejador global de errores:
     set_exception_handler(function (/*$exception*/) {
         // error_log("Excepción no capturada: " . $exception->getMessage());
-        header("Location: ../Redirecciones/server_error_500.php");
+        header(GeneralConfig::errorPageUrl -> value);
         exit;
     });
 

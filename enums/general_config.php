@@ -9,7 +9,7 @@ enum GeneralConfig: string {
     case getSqlCommandQuery = 'SELECT password, salt FROM clientes WHERE email = ?';
     case encryptTokenAlgorith = 'HS256';
     case tokenKey = 'esta_es_mi_clave';
-    case errorPageUrl = 'Location: server_error_500.html';
+    case errorPageUrl = 'Location: ../Redirecciones/server_error_500.html';
     case encryptAlgorith = 'sha256';
     //registro
     case welcomePageUrl_registro = 'Location: bienvenido.php';
@@ -27,7 +27,7 @@ enum GeneralConfig: string {
     case logFileWarnings = 'warnings.log';
     case credentialFile = 'database.json';
 
-    case accesoDenegado = 'Location: ../pr_token/accesodenegado.php';
-    case accesoNoAutorizado = 'Location: ../pr_token/acceso_no_autorizado.php';
+    case accesoDenegado = 'Location: ../Redirecciones/acceso_denegado.php';
+    case accesoNoAutorizado = 'Location: ../Redirecciones/acceso_no_autorizado.php';
 
 }

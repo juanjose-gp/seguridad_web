@@ -27,7 +27,7 @@
           <div class="row center">
               <div class="card shadow col-md-6 offset-md-3">
                 <div class="card-header text-center">
-                    <h5>Acceso no autorizado</h5>
+                    <h5 class=" text-danger">Acceso no autorizado</h5>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">ROL SIN ACCESO</h5>
