@@ -10,18 +10,18 @@ $secret_key = "clave_secreta_super_segura";
 
 // Verifica el token y el rol
 if (!isset($_SESSION['token'])) {
-    header(GeneralConfig::accesoNoAutorizado->value);
+    header("Location: acceso_no_autorizado.php");
     exit;
 }
 
 try {
-    $decoded = JWT::decode($_SESSION['token'], new Key($secret_key, GeneralConfig::encryptTokenAlgorith->value));
+    $decoded = JWT::decode($_SESSION['token'], new Key($secret_key, 'HS256'));
     if ($decoded->rol !== 'admin') {
-         header(GeneralConfig::accesoDenegado->value);
+         header("Location: accesodenegado.php");
         exit;
     }
 } catch (Exception $e) {
-    header(GeneralConfig::Inicio->value);
+    header("Location: ../Inicio/Inicio.php");
     exit;
 }
 ?>
